@@ -1,4 +1,6 @@
 {
     "python.formatting.provider": "autopep8",
-    "python.pythonPath": "/Users/ramon/.local/share/virtualenvs/flask-blog-ozrcjQjp/bin/python"
+    "python.pythonPath": "/Users/ramon/.local/share/virtualenvs/flask-blog-ozrcjQjp/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
