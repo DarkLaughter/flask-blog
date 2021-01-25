@@ -1,5 +1,6 @@
-from blog.core.views import core
+from blog.users.views import users
 from blog.error_pages.handlers import error_pages
+from blog.core.views import core
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -28,8 +29,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'users.login'
 
-
 ######
 
 app.register_blueprint(core)
 app.register_blueprint(error_pages)
+app.register_blueprint(users)
