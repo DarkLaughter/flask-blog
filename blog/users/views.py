@@ -52,7 +52,7 @@ def logout():
     return redirect(url_for("core.index"))
 
 # Update (Account)
-@user.route('/account', methods=['GET', 'POST'])
+@users.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
 
