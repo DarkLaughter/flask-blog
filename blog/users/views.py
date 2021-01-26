@@ -14,7 +14,7 @@ def register():
     form = RegistrationForm()
 
     if form.validate_on_submit():
-        user = User.(email=form.email.data, username=form.username.data, password=form.password.data)
+        user = User(email=form.email.data, username=form.username.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
         flash('Registration Sucessful')
@@ -25,7 +25,7 @@ def register():
 # Log In
 
 
-@users.route(/'login', methods=['GET', 'POST'])
+@users.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -36,12 +36,12 @@ def login():
 
             next = request.args.get('next')
 
-            if next == None or not next[0] == '/':
-                next url_for('core.index')
+            if next ==None or not next[0] == '/':
+                next = url_for('core.index')
 
             return redirect(next)
 
-    return render_template('login.html'. form=form)
+    return render_template('login.html',form=form)
 
 # Log Out
 
@@ -64,12 +64,12 @@ def account():
             pic = add_profile_pic(form.picture.data,username)
             current_user.profile_image = pic
 
-    current_user.username = form.username.data
-    current_user.email = form.email.data
-    flash('User Account Updated!')
-    return redirect(url_for('users.account'))
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        flash('User Account Updated!')
+        return redirect(url_for('users.account'))
 
-    elif request.method == "GET"
+    elif request.method == "GET":
         form.username.data = current_user.username
         form.email.data = current_user.email
     
