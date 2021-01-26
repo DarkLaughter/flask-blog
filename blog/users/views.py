@@ -52,7 +52,7 @@ def logout():
     return redirect(url_for("core.index"))
 
 # Update (Account)
-@users.route('/account', methods=['GET', 'POST'])
+@users.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
 
@@ -66,6 +66,7 @@ def account():
 
         current_user.username = form.username.data
         current_user.email = form.email.data
+        db.session.commit()
         flash('User Account Updated!')
         return redirect(url_for('users.account'))
 
@@ -73,7 +74,7 @@ def account():
         form.username.data = current_user.username
         form.email.data = current_user.email
     
-    profile_image = url_for('static', filename='profile_pics/'+current_user.profile_image)
+    profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
     return render_template('account.html',profile_image=profile_image,form=form)
 
 
