@@ -12,7 +12,7 @@ blog_posts = Blueprint('blog_posts',__name__)
 def create_post():
     form = BlogPostForm()
     if form.validate_on_submit():
-        blog_post = BlogPost(title=form.title.data,text=form.text.data,user_id=current_user.id)
+        blog_post = Post(title=form.title.data,text=form.text.data,user_id=current_user.id)
         db.session.add(blog_post)
         db.session.commit()
         flash('Blog Post Created')
@@ -24,7 +24,7 @@ def create_post():
 @blog_posts.route('/<int:blog_post_id>')
 def blog_post(blog_post_id):
     blog_post = Post.query.get_or_404(blog_post_id)
-    return render_template('blog_post.html',title=blog_post.title,date=blog_post.data,post=blog_post)
+    return render_template('blog_post.html',title=blog_post.title,date=blog_post.date,post=blog_post)
     
 
 ###Update a Post
